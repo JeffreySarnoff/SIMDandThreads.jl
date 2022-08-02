@@ -14,8 +14,8 @@ include("simd_errorfree.jl")
 include("simd_arith.jl")
 include("simd_fma.jl")
 
-include("simd_ddprearith.jl")
-include("simd_ddarith.jl")
+include("simd_dd_prearith.jl")
+include("simd_dd_arith.jl")
 
 
 
