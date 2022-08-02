@@ -1,9 +1,3 @@
-#=
-
-simdvec(x::Vec{N1,T}, y::Vec{N2,T}, z::Vec{N3,T}) where {N1, N2, N3, T<:SIMDNUMS} = 
-    SIMD.Vec{N1+N2+N3,T}((x.data..., y.data..., z.data...))      
-=#
-
 function two_hilo_sum(a::Vec{N,T}, b::Vec{N,T}) where {N,T}
   hi = a + b
   lo = b - (hi - a)
@@ -36,10 +30,17 @@ function two_prod(a::Vec{N,T}, b::Vec{N,T}) where {N,T}
     hi, lo
 end
 
-# two_div, two_sqrt are as close to error-free as possible
+# two_recip, two_div, two_sqrt are as close to error-free as possible
+
+function two_recip(b::Vec{N,T}) where {N,T}
+    hi = one(T) / b
+    v  = -hi * b
+    lo = v / b
+    hi, lo
+end
 
 function two_div(a::Vec{N,T}, b::Vec{N,T}) where {N,T}
-    hi = a . b
+    hi = a / b
     v  = fma(-hi, b, a)
     lo = v / b
     hi, lo
