@@ -1,3 +1,29 @@
+#=
+
+
+function two_hilo_sum(a::Vec{N,T}, b::Vec{N,T}) where {N,T}
+  hi = a + b
+  lo = b - (hi - a)
+  hi, lo
+end
+
+function two_sum(a::Vec{N,T}, b::Vec{N,T}) where {N,T}
+  hi = a + b
+  v  = hi - a
+  lo = (a - (hi - v)) + (b - v)
+  hi, lo
+end
+
+
+function two_prod(a::Vec{N,T}, b::Vec{N,T}) where {N,T}
+    hi = a * b
+    lo = fma(a, b, -hi)
+    hi, lo
+end
+
+=#
+
+
 function add_dddd_dd(xhi::Vec{N,T}, xlo::Vec{N,T}, yhi::Vec{N,T}, ylo::Vec{N,T}) where {N,T}
   s, e = two_sum(xhi, yhi)
   w = xlo + ylo
