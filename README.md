@@ -1,2 +1,3 @@
 # SIMDandThreads.jl
-experimental
+## experimental
+### not intended for direct use
