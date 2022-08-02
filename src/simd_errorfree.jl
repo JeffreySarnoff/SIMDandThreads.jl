@@ -6,6 +6,17 @@ function one_neg(a::Vec{N,T}) where {N,T}
   -abs(a)
 end
 
+maxmin(a::Vec{N,T}, b::Vec{N,T}) where {N,T} =
+    max(a,b), min(a,b)
+
+function maxminmag((a::Vec{N,T}, b::Vec{N,T}) where {N,T} 
+    absa = abs(a)
+    absb = abs(b)
+    amax = absa > absb
+    bmax = ~(amax)
+    throw(ErrorException("Not Implemented"))
+end
+
 function two_hilo_sum(a::Vec{N,T}, b::Vec{N,T}) where {N,T}
   hi = a + b
   lo = b - (hi - a)
