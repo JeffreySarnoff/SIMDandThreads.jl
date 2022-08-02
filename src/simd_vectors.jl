@@ -27,3 +27,9 @@ simdhilo(hilo::NTuple{2,NTuple{2,T}}) where {T} =
 simdhilo(hilo::NTuple{4,NTuple{2,T}}) where {T} =
     SIMD.Vec{8,T}((hilo[1][1], hilo[1][2], hilo[2][1], hilo[2][2], hilo[3][1], hilo[3][2], hilo[4][1], hilo[4][2]))
 
+#=
+julia> aa,bb=a.data
+(VecElement{Float64}(1.0e12), VecElement{Float64}(4.5e-22))
+julia> aa,bb=map(x->x.value,a.data)
+(1.0e12, 4.5e-22)
+=#
