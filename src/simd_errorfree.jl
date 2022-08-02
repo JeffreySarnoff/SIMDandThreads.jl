@@ -1,3 +1,11 @@
+function one_abs(a::Vec{N,T}) where {N,T}
+  abs(a)
+end
+
+function one_neg(a::Vec{N,T}) where {N,T}
+  -abs(a)
+end
+
 function two_hilo_sum(a::Vec{N,T}, b::Vec{N,T}) where {N,T}
   hi = a + b
   lo = b - (hi - a)
