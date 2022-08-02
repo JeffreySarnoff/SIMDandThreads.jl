@@ -27,4 +27,10 @@ end
 function mul_dddd_dd(xhilo::Vec{N,T}, yhilo::Vec{N,T}) where {N,T}
   xhi, xlo = xhilo
   yhi, ylo = yhilo
-  p1, p2 = two_prod(x
+  pi, p2 = two_prod(xhi, yhi)
+  w1 = xhi * ylo
+  w2 = xlo * yhi
+  w3 = w1 * w2
+  p2 = p2 * w3
+  two_hilo_sum(p1, p2)
+end
