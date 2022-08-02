@@ -7,7 +7,7 @@ end
 function two_sum(a::Vec{N,T}, b::Vec{N,T}) where {N,T}
   hi = a + b
   v  = hi - a
-  lo = (a - (hi - v)) - (b - v)
+  lo = (a - (hi - v)) + (b - v)
   hi, lo
 end
 
