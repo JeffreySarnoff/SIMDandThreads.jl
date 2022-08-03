@@ -24,7 +24,7 @@ function findminmax_turbo(f::F, x) where {F}
     maxind = 0
     minval = typemax(T)
     maxval = typemin(T)
-    @turbo for i = eachindex(x)
+    VLOOP.@turbo for i = eachindex(x)
        fx = f(x[i])
        gt = fx > maxval
        lt = fx < minval
